@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "43fb38c5-c76a-4bd9-b9f6-66ebc064d8db": {
+      "ProjectGuid": "43fb38c5-c76a-4bd9-b9f6-66ebc064d8db",
+      "DisplayName": "PersonalTracking",
+      "ColorIndex": 0
+    },
+    "f8fefd7f-a886-40ca-b976-c392755670cc": {
+      "ProjectGuid": "f8fefd7f-a886-40ca-b976-c392755670cc",
+      "DisplayName": "BLL",
+      "ColorIndex": 1
+    },
+    "3be6b0e4-b480-4ab9-b5ff-f1e2df89a129": {
+      "ProjectGuid": "3be6b0e4-b480-4ab9-b5ff-f1e2df89a129",
+      "DisplayName": "DAL",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 3
+}
