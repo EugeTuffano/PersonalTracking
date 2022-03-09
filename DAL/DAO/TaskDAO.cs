@@ -79,9 +79,23 @@ namespace DAL.DAO
             return tasklist;
         }
 
-        public static List<TaskDetailDTO> GetTask()
+        public static void UpdateTask(Task task)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Task ts = db.Task.First(x => x.ID == task.ID);
+                ts.TaskTitle = task.TaskTitle;
+                ts.TaskContent = task.TaskContent;
+                ts.TaskState = task.TaskState;
+                ts.EmployeeID = task.EmployeeID;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
+
     }
 }

@@ -8,6 +8,7 @@ namespace DAL.DTO
 {
     public class SalaryDetailDTO
     {
+
         public int EmployeeID { get; set; }
         public int UserNo { get; set; }
         public string Password { get; set; }
@@ -23,5 +24,6 @@ namespace DAL.DTO
         public int SalaryAmount { get; set; }
         public int SalaryID { get; set; }
         public int OldSalary { get; set; }
+       
     }
 }

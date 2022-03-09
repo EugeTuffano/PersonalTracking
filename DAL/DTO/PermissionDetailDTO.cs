@@ -17,11 +17,12 @@ namespace DAL.DTO
         public string PositionName { get; set; }
         public int DepartmentID { get; set; }
         public int PositionID { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public int PermissionDayAmount { get; set; }
         public string StateName { get; set; }
         public int State { get; set; }
         public string Explanation { get; set; }
+        public int PermissionID { get; set; }
     }
 }
