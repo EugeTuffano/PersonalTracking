@@ -63,12 +63,72 @@ namespace DAL.DAO
                 dto.BirthDay = item.birthDay;
                 dto.ImagePath = item.ImagePath;
                 dto.Adress = item.Adress;
+                dto.ImagePath = item.ImagePath;
                 employeeList.Add(dto);
 
             }
-
-
             return employeeList;
+        }
+
+        public static void DeleteEmployee(int employeeID)
+        {
+            try
+            {
+                Employee emp = db.Employee.First(x => x.ID == employeeID);
+                db.Employee.DeleteOnSubmit(emp);
+                db.SubmitChanges();
+
+                /*
+                List<Task> tasks = db.Task.Where(x => x.EmployeeID == employeeID).ToList();
+                db.Task.DeleteAllOnSubmit(tasks);
+                db.SubmitChanges();
+                List<Salary> salaries = db.Salary.Where(x => x.EmployeeId == employeeID).ToList();
+                db.Salary.DeleteAllOnSubmit(salaries);
+                db.SubmitChanges();
+                List<Permission> permissions = db.Permission.Where(x => x.EmployeeID == employeeID).ToList();
+                db.Permission.DeleteAllOnSubmit(permissions);
+                db.SubmitChanges();
+                */
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public static void UpdateEmployee(Position position)
+        {
+            List<Employee> list = db.Employee.Where(x => x.PositionID == position.ID).ToList();
+            foreach (var item in list)
+            {
+                item.DepartmentID = position.DepartmentID;
+            }
+            db.SubmitChanges();
+        }
+
+        public static void UpdateEmployee(Employee employee)
+        {
+            try
+            {
+                Employee emp = db.Employee.First(x => x.ID == employee.ID);
+                emp.UserNo = employee.UserNo;
+                emp.Name = employee.Name;
+                emp.Surname= employee.Surname;
+                emp.Surname = employee.Surname;
+                emp.Password = employee.Password;
+                emp.isAdmin = employee.isAdmin;
+                emp.BirthDay = employee.BirthDay;
+                emp.Adress = employee.Adress;
+                emp.DepartmentID = employee.DepartmentID;
+                emp.PositionID = employee.PositionID;
+                emp.Salary = employee.Salary;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public static void UpdateEmployee(int employeeID, int amount)

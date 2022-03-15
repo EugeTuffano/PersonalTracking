@@ -63,9 +63,25 @@ namespace DAL.DAO
                 dto.DepartmentID = item.departmentID;
                 dto.PositionID = item.positionID;
                 dto.OldSalary = item.amount;
+                dto.SalaryID = item.salaryID;
                 salaryList.Add(dto);
             }
             return salaryList;
+        }
+
+        public static void DeleteSalary(int salaryID)
+        {
+            try
+            {
+                Salary salary = db.Salary.First(x => x.ID == salaryID);
+                db.Salary.DeleteOnSubmit(salary);
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public static void UpdateSalary(Salary salary)

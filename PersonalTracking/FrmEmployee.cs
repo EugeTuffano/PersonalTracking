@@ -42,6 +42,10 @@ namespace PersonalTracking
         }
 
         EmployeeDTO dto = new EmployeeDTO();
+        public EmployeeDetailDTO detail = new EmployeeDetailDTO();
+        public bool isUpdate = false;
+        string imagepath = "";
+
         private void FrmEmployee_Load(object sender, EventArgs e)
         {
             dto = EmployeeBLL.GetAll();
@@ -54,6 +58,30 @@ namespace PersonalTracking
             cmbDepartment.SelectedIndex = -1;
             cmbPosition.SelectedIndex = -1;
             combofull = true;
+            if (isUpdate)
+            {
+                txtName.Text = detail.Name;
+                txtSurname.Text = detail.Surname;
+                txtUserNo.Text = detail.UserNo.ToString();
+                txtPassword.Text = detail.Password;
+                chAdmin.Checked = Convert.ToBoolean(detail.isAdmin);
+                txtAdress.Text = detail.Adress;
+                dateTimePicker1.Value = Convert.ToDateTime(detail.BirthDay);
+                cmbDepartment.SelectedValue = detail.DepartmentID;
+                cmbPosition.SelectedValue = detail.PositionID;
+                txtSalary.Text = detail.Salary.ToString();
+                imagepath = Application.StartupPath + "\\images\\" + detail.ImagePath;
+                txtImagePath.Text = imagepath;
+                pictureBox1.ImageLocation = imagepath;
+                if (!UserStatic.isAdmin)
+                {
+                    chAdmin.Enabled = false;
+                    txtUserNo.Enabled = false;
+                    txtSalary.Enabled = false;
+                    cmbDepartment.Enabled = false;
+                    cmbPosition.Enabled = false;
+                }
+            }
         }
 
         bool combofull = false;
@@ -85,8 +113,7 @@ namespace PersonalTracking
         {
             if (txtUserNo.Text.Trim() == "")
                 MessageBox.Show("User number is empty");
-            else if (!EmployeeBLL.isUnique(Convert.ToInt32(txtUserNo.Text)))
-                MessageBox.Show("This user number is used by another employee, please change");
+            
             else if (txtPassword.Text.Trim() == "")
                 MessageBox.Show("Password is empty");
             else if (txtName.Text.Trim() == "")
@@ -101,37 +128,79 @@ namespace PersonalTracking
                 MessageBox.Show("Select a position");
             else
             {
-                Employee employee = new Employee();
-                employee.UserNo = Convert.ToInt32(txtUserNo.Text);
-                employee.Password = txtPassword.Text;
-                employee.isAdmin = chAdmin.Checked;
-                employee.Name = txtName.Text;
-                employee.Surname = txtSurname.Text;
-                employee.Salary = Convert.ToInt32(txtSalary.Text);
-                employee.DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue);
-                employee.PositionID = Convert.ToInt32(cmbPosition.SelectedValue);
-                employee.BirthDay = dateTimePicker1.Value;
-                employee.Adress = txtAdress.Text;
-                employee.ImagePath = fileName;
+                if (!isUpdate)
+                {
+                    if (!EmployeeBLL.isUnique(Convert.ToInt32(txtUserNo.Text)))
+                        MessageBox.Show("This user number is used by another employee, please change");
+                    else
+                    {
+                        Employee employee = new Employee();
+                        employee.UserNo = Convert.ToInt32(txtUserNo.Text);
+                        employee.Password = txtPassword.Text;
+                        employee.isAdmin = chAdmin.Checked;
+                        employee.Name = txtName.Text;
+                        employee.Surname = txtSurname.Text;
+                        employee.Salary = Convert.ToInt32(txtSalary.Text);
+                        employee.DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue);
+                        employee.PositionID = Convert.ToInt32(cmbPosition.SelectedValue);
+                        employee.BirthDay = dateTimePicker1.Value;
+                        employee.Adress = txtAdress.Text;
+                        employee.ImagePath = fileName;
 
-                EmployeeBLL.AddEmployee(employee);
-                File.Copy(txtImagePath.Text, @"images\\" + fileName);
-                MessageBox.Show("Employee was added");
+                        EmployeeBLL.AddEmployee(employee);
+                        File.Copy(txtImagePath.Text, @"images\\" + fileName);
+                        MessageBox.Show("Employee was added");
 
-                txtUserNo.Clear();
-                txtPassword.Clear();
-                chAdmin.Checked = false;
-                txtName.Clear();
-                txtSurname.Clear();
-                txtSalary.Clear();
-                cmbDepartment.SelectedIndex = -1;
-                cmbPosition.DataSource = dto.Positions;
-                cmbPosition.SelectedIndex = -1;
-                combofull = true;
-                dateTimePicker1.Value = DateTime.Today;
-                txtAdress.Clear();
-                txtImagePath.Clear();
-                pictureBox1.Image = null;
+                        txtUserNo.Clear();
+                        txtPassword.Clear();
+                        chAdmin.Checked = false;
+                        txtName.Clear();
+                        txtSurname.Clear();
+                        txtSalary.Clear();
+                        cmbDepartment.SelectedIndex = -1;
+                        cmbPosition.DataSource = dto.Positions;
+                        cmbPosition.SelectedIndex = -1;
+                        combofull = true;
+                        dateTimePicker1.Value = DateTime.Today;
+                        txtAdress.Clear();
+                        txtImagePath.Clear();
+                        pictureBox1.Image = null;
+                    }
+                    
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Are you sure?", "Warning", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        Employee employee = new Employee();
+                        if (txtImagePath.Text != imagepath)
+                        {
+                            if (File.Exists(@"images\\" + detail.ImagePath))
+                                File.Delete(@"images\\" + detail.ImagePath);
+                            File.Copy(txtImagePath.Text, @"images\\" + fileName);
+                            employee.ImagePath = fileName;
+                        }
+                        else
+                        {
+                            employee.ImagePath = detail.ImagePath;
+                            employee.ID = detail.EmployeeID;
+                            employee.UserNo = Convert.ToInt32(txtUserNo.Text);
+                            employee.Name = txtName.Text;
+                            employee.Surname = txtSurname.Text;
+                            employee.isAdmin = chAdmin.Checked;
+                            employee.Password = txtPassword.Text;
+                            employee.Adress = txtAdress.Text;
+                            employee.BirthDay = dateTimePicker1.Value;
+                            employee.DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue);
+                            employee.PositionID = Convert.ToInt32(cmbPosition.SelectedValue);
+                            employee.Salary = Convert.ToInt32(txtSalary.Text);
+                            EmployeeBLL.UpdateEmployee(employee);
+                            MessageBox.Show("Employee was updated");
+                            this.Close();
+                        }
+                    }
+                }
             }
         }
 

@@ -65,6 +65,8 @@ namespace PersonalTracking
         void FillAllData()
         {
             dto = SalaryBLL.GetAll();
+            if (!UserStatic.isAdmin)
+                dto.Salaries = dto.Salaries.Where(x => x.EmployeeID == UserStatic.EmployeeID).ToList();
             dataGridView1.DataSource = dto.Salaries;
             combofull = false;
             cmbDepartment.DataSource = dto.Departments;
@@ -101,6 +103,14 @@ namespace PersonalTracking
             dataGridView1.Columns[12].HeaderText = "Salary";
             dataGridView1.Columns[13].Visible = false;
             //dataGridView1.Columns[14].Visible = false;
+            if (!UserStatic.isAdmin)
+            {
+                btnUpdate.Hide();
+                btnDelete.Hide();
+                btnNew.Location = new Point(272, 18);
+                btnClose.Location = new Point(418, 18);
+                pnlForAdmin.Hide();
+            }
 
         }
 
@@ -190,6 +200,18 @@ namespace PersonalTracking
             detail.MonthID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[11].Value);
             detail.SalaryAmount = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[12].Value);
             detail.OldSalary = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[12].Value);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure to delete this salary?", "Warning", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                SalaryBLL.DeleteSalary(detail.SalaryID);
+                MessageBox.Show("Salary was deleted");
+                FillAllData();
+                CleanFilters();
+            }
         }
     }
 }

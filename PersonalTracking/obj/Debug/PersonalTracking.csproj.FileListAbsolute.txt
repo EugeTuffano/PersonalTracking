@@ -28,3 +28,4 @@ C:\Users\eugen\source\repos\PersonalTracking\obj\Debug\PersonalTracking.FrmSalar
 C:\Users\eugen\source\repos\PersonalTracking\obj\Debug\PersonalTracking.FrmSalaryList.resources
 C:\Users\eugen\source\repos\PersonalTracking\obj\Debug\PersonalTracking.FrmTask.resources
 C:\Users\eugen\source\repos\PersonalTracking\bin\Debug\DAL.dll.config
+C:\Users\eugen\source\repos\PersonalTracking\obj\Debug\PersonalTracking.csproj.ResolveComReference.cache
