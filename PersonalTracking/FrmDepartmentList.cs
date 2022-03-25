@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
+using BLL.Models;
 using DAL;
 
 namespace PersonalTracking
@@ -59,7 +60,7 @@ namespace PersonalTracking
 
         }
         List<Department> list = new List<Department>();
-        public Department detail = new Department();
+        public DepartmentModel detail = new DepartmentModel();
         private void FrmDepartmentList_Load(object sender, EventArgs e)
         {
             

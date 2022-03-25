@@ -30,33 +30,33 @@ namespace DAL
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
-    partial void InsertDepartment(Department instance);
-    partial void UpdateDepartment(Department instance);
-    partial void DeleteDepartment(Department instance);
     partial void InsertTaskState(TaskState instance);
     partial void UpdateTaskState(TaskState instance);
     partial void DeleteTaskState(TaskState instance);
-    partial void InsertEmployee(Employee instance);
-    partial void UpdateEmployee(Employee instance);
-    partial void DeleteEmployee(Employee instance);
-    partial void InsertMonths(Months instance);
-    partial void UpdateMonths(Months instance);
-    partial void DeleteMonths(Months instance);
-    partial void InsertPermission(Permission instance);
-    partial void UpdatePermission(Permission instance);
-    partial void DeletePermission(Permission instance);
-    partial void InsertPermissionState(PermissionState instance);
-    partial void UpdatePermissionState(PermissionState instance);
-    partial void DeletePermissionState(PermissionState instance);
-    partial void InsertPosition(Position instance);
-    partial void UpdatePosition(Position instance);
-    partial void DeletePosition(Position instance);
-    partial void InsertSalary(Salary instance);
-    partial void UpdateSalary(Salary instance);
-    partial void DeleteSalary(Salary instance);
     partial void InsertTask(Task instance);
     partial void UpdateTask(Task instance);
     partial void DeleteTask(Task instance);
+    partial void InsertSalary(Salary instance);
+    partial void UpdateSalary(Salary instance);
+    partial void DeleteSalary(Salary instance);
+    partial void InsertPosition(Position instance);
+    partial void UpdatePosition(Position instance);
+    partial void DeletePosition(Position instance);
+    partial void InsertPermissionState(PermissionState instance);
+    partial void UpdatePermissionState(PermissionState instance);
+    partial void DeletePermissionState(PermissionState instance);
+    partial void InsertPermission(Permission instance);
+    partial void UpdatePermission(Permission instance);
+    partial void DeletePermission(Permission instance);
+    partial void InsertMonths(Months instance);
+    partial void UpdateMonths(Months instance);
+    partial void DeleteMonths(Months instance);
+    partial void InsertEmployee(Employee instance);
+    partial void UpdateEmployee(Employee instance);
+    partial void DeleteEmployee(Employee instance);
+    partial void InsertDepartment(Department instance);
+    partial void UpdateDepartment(Department instance);
+    partial void DeleteDepartment(Department instance);
     #endregion
 		
 		public EmployeeDataClassDataContext() : 
@@ -89,14 +89,6 @@ namespace DAL
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Department> Department
-		{
-			get
-			{
-				return this.GetTable<Department>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TaskState> TaskState
 		{
 			get
@@ -105,43 +97,11 @@ namespace DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<Employee> Employee
+		public System.Data.Linq.Table<Task> Task
 		{
 			get
 			{
-				return this.GetTable<Employee>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Months> Months
-		{
-			get
-			{
-				return this.GetTable<Months>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Permission> Permission
-		{
-			get
-			{
-				return this.GetTable<Permission>();
-			}
-		}
-		
-		public System.Data.Linq.Table<PermissionState> PermissionState
-		{
-			get
-			{
-				return this.GetTable<PermissionState>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Position> Position
-		{
-			get
-			{
-				return this.GetTable<Position>();
+				return this.GetTable<Task>();
 			}
 		}
 		
@@ -153,97 +113,51 @@ namespace DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<Task> Task
+		public System.Data.Linq.Table<Position> Position
 		{
 			get
 			{
-				return this.GetTable<Task>();
+				return this.GetTable<Position>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Department")]
-	public partial class Department : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _DeparmentName;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnDeparmentNameChanging(string value);
-    partial void OnDeparmentNameChanged();
-    #endregion
-		
-		public Department()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
+		public System.Data.Linq.Table<PermissionState> PermissionState
 		{
 			get
 			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
+				return this.GetTable<PermissionState>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeparmentName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string DeparmentName
+		public System.Data.Linq.Table<Permission> Permission
 		{
 			get
 			{
-				return this._DeparmentName;
-			}
-			set
-			{
-				if ((this._DeparmentName != value))
-				{
-					this.OnDeparmentNameChanging(value);
-					this.SendPropertyChanging();
-					this._DeparmentName = value;
-					this.SendPropertyChanged("DeparmentName");
-					this.OnDeparmentNameChanged();
-				}
+				return this.GetTable<Permission>();
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
+		public System.Data.Linq.Table<Months> Months
 		{
-			if ((this.PropertyChanging != null))
+			get
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				return this.GetTable<Months>();
 			}
 		}
 		
-		protected virtual void SendPropertyChanged(String propertyName)
+		public System.Data.Linq.Table<Employee> Employee
 		{
-			if ((this.PropertyChanged != null))
+			get
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<Employee>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Department> Department
+		{
+			get
+			{
+				return this.GetTable<Department>();
 			}
 		}
 	}
@@ -334,6 +248,858 @@ namespace DAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Task")]
+	public partial class Task : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _EmployeeID;
+		
+		private string _TaskTitle;
+		
+		private string _TaskContent;
+		
+		private System.Nullable<System.DateTime> _TaskStartDate;
+		
+		private System.Nullable<System.DateTime> _TaskDeliveryDate;
+		
+		private int _TaskState;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnEmployeeIDChanging(int value);
+    partial void OnEmployeeIDChanged();
+    partial void OnTaskTitleChanging(string value);
+    partial void OnTaskTitleChanged();
+    partial void OnTaskContentChanging(string value);
+    partial void OnTaskContentChanged();
+    partial void OnTaskStartDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnTaskStartDateChanged();
+    partial void OnTaskDeliveryDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnTaskDeliveryDateChanged();
+    partial void OnTaskStateChanging(int value);
+    partial void OnTaskStateChanged();
+    #endregion
+		
+		public Task()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="Int NOT NULL")]
+		public int EmployeeID
+		{
+			get
+			{
+				return this._EmployeeID;
+			}
+			set
+			{
+				if ((this._EmployeeID != value))
+				{
+					this.OnEmployeeIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeID = value;
+					this.SendPropertyChanged("EmployeeID");
+					this.OnEmployeeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskTitle", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string TaskTitle
+		{
+			get
+			{
+				return this._TaskTitle;
+			}
+			set
+			{
+				if ((this._TaskTitle != value))
+				{
+					this.OnTaskTitleChanging(value);
+					this.SendPropertyChanging();
+					this._TaskTitle = value;
+					this.SendPropertyChanged("TaskTitle");
+					this.OnTaskTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskContent", DbType="VarChar(MAX)")]
+		public string TaskContent
+		{
+			get
+			{
+				return this._TaskContent;
+			}
+			set
+			{
+				if ((this._TaskContent != value))
+				{
+					this.OnTaskContentChanging(value);
+					this.SendPropertyChanging();
+					this._TaskContent = value;
+					this.SendPropertyChanged("TaskContent");
+					this.OnTaskContentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskStartDate", DbType="Date")]
+		public System.Nullable<System.DateTime> TaskStartDate
+		{
+			get
+			{
+				return this._TaskStartDate;
+			}
+			set
+			{
+				if ((this._TaskStartDate != value))
+				{
+					this.OnTaskStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._TaskStartDate = value;
+					this.SendPropertyChanged("TaskStartDate");
+					this.OnTaskStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskDeliveryDate", DbType="Date")]
+		public System.Nullable<System.DateTime> TaskDeliveryDate
+		{
+			get
+			{
+				return this._TaskDeliveryDate;
+			}
+			set
+			{
+				if ((this._TaskDeliveryDate != value))
+				{
+					this.OnTaskDeliveryDateChanging(value);
+					this.SendPropertyChanging();
+					this._TaskDeliveryDate = value;
+					this.SendPropertyChanged("TaskDeliveryDate");
+					this.OnTaskDeliveryDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskState", DbType="Int NOT NULL")]
+		public int TaskState
+		{
+			get
+			{
+				return this._TaskState;
+			}
+			set
+			{
+				if ((this._TaskState != value))
+				{
+					this.OnTaskStateChanging(value);
+					this.SendPropertyChanging();
+					this._TaskState = value;
+					this.SendPropertyChanged("TaskState");
+					this.OnTaskStateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Salary")]
+	public partial class Salary : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _EmployeeId;
+		
+		private int _Amount;
+		
+		private int _Year;
+		
+		private int _MonthID;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnEmployeeIdChanging(int value);
+    partial void OnEmployeeIdChanged();
+    partial void OnAmountChanging(int value);
+    partial void OnAmountChanged();
+    partial void OnYearChanging(int value);
+    partial void OnYearChanged();
+    partial void OnMonthIDChanging(int value);
+    partial void OnMonthIDChanged();
+    #endregion
+		
+		public Salary()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeId", DbType="Int NOT NULL")]
+		public int EmployeeId
+		{
+			get
+			{
+				return this._EmployeeId;
+			}
+			set
+			{
+				if ((this._EmployeeId != value))
+				{
+					this.OnEmployeeIdChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeId = value;
+					this.SendPropertyChanged("EmployeeId");
+					this.OnEmployeeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Int NOT NULL")]
+		public int Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Int NOT NULL")]
+		public int Year
+		{
+			get
+			{
+				return this._Year;
+			}
+			set
+			{
+				if ((this._Year != value))
+				{
+					this.OnYearChanging(value);
+					this.SendPropertyChanging();
+					this._Year = value;
+					this.SendPropertyChanged("Year");
+					this.OnYearChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MonthID", DbType="Int NOT NULL")]
+		public int MonthID
+		{
+			get
+			{
+				return this._MonthID;
+			}
+			set
+			{
+				if ((this._MonthID != value))
+				{
+					this.OnMonthIDChanging(value);
+					this.SendPropertyChanging();
+					this._MonthID = value;
+					this.SendPropertyChanged("MonthID");
+					this.OnMonthIDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Position")]
+	public partial class Position : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _PositionName;
+		
+		private int _DepartmentID;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnPositionNameChanging(string value);
+    partial void OnPositionNameChanged();
+    partial void OnDepartmentIDChanging(int value);
+    partial void OnDepartmentIDChanged();
+    #endregion
+		
+		public Position()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PositionName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PositionName
+		{
+			get
+			{
+				return this._PositionName;
+			}
+			set
+			{
+				if ((this._PositionName != value))
+				{
+					this.OnPositionNameChanging(value);
+					this.SendPropertyChanging();
+					this._PositionName = value;
+					this.SendPropertyChanged("PositionName");
+					this.OnPositionNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentID", DbType="Int NOT NULL")]
+		public int DepartmentID
+		{
+			get
+			{
+				return this._DepartmentID;
+			}
+			set
+			{
+				if ((this._DepartmentID != value))
+				{
+					this.OnDepartmentIDChanging(value);
+					this.SendPropertyChanging();
+					this._DepartmentID = value;
+					this.SendPropertyChanged("DepartmentID");
+					this.OnDepartmentIDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PermissionState")]
+	public partial class PermissionState : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _StateName;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnStateNameChanging(string value);
+    partial void OnStateNameChanged();
+    #endregion
+		
+		public PermissionState()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string StateName
+		{
+			get
+			{
+				return this._StateName;
+			}
+			set
+			{
+				if ((this._StateName != value))
+				{
+					this.OnStateNameChanging(value);
+					this.SendPropertyChanging();
+					this._StateName = value;
+					this.SendPropertyChanged("StateName");
+					this.OnStateNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Permission")]
+	public partial class Permission : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _EmployeeID;
+		
+		private System.DateTime _PermissionStartDate;
+		
+		private System.DateTime _PermissionEndDate;
+		
+		private int _PermissionState;
+		
+		private string _PermissionExplanation;
+		
+		private int _PermissionDay;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnEmployeeIDChanging(int value);
+    partial void OnEmployeeIDChanged();
+    partial void OnPermissionStartDateChanging(System.DateTime value);
+    partial void OnPermissionStartDateChanged();
+    partial void OnPermissionEndDateChanging(System.DateTime value);
+    partial void OnPermissionEndDateChanged();
+    partial void OnPermissionStateChanging(int value);
+    partial void OnPermissionStateChanged();
+    partial void OnPermissionExplanationChanging(string value);
+    partial void OnPermissionExplanationChanged();
+    partial void OnPermissionDayChanging(int value);
+    partial void OnPermissionDayChanged();
+    #endregion
+		
+		public Permission()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="Int NOT NULL")]
+		public int EmployeeID
+		{
+			get
+			{
+				return this._EmployeeID;
+			}
+			set
+			{
+				if ((this._EmployeeID != value))
+				{
+					this.OnEmployeeIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeID = value;
+					this.SendPropertyChanged("EmployeeID");
+					this.OnEmployeeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionStartDate", DbType="Date NOT NULL")]
+		public System.DateTime PermissionStartDate
+		{
+			get
+			{
+				return this._PermissionStartDate;
+			}
+			set
+			{
+				if ((this._PermissionStartDate != value))
+				{
+					this.OnPermissionStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._PermissionStartDate = value;
+					this.SendPropertyChanged("PermissionStartDate");
+					this.OnPermissionStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionEndDate", DbType="Date NOT NULL")]
+		public System.DateTime PermissionEndDate
+		{
+			get
+			{
+				return this._PermissionEndDate;
+			}
+			set
+			{
+				if ((this._PermissionEndDate != value))
+				{
+					this.OnPermissionEndDateChanging(value);
+					this.SendPropertyChanging();
+					this._PermissionEndDate = value;
+					this.SendPropertyChanged("PermissionEndDate");
+					this.OnPermissionEndDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionState", DbType="Int NOT NULL")]
+		public int PermissionState
+		{
+			get
+			{
+				return this._PermissionState;
+			}
+			set
+			{
+				if ((this._PermissionState != value))
+				{
+					this.OnPermissionStateChanging(value);
+					this.SendPropertyChanging();
+					this._PermissionState = value;
+					this.SendPropertyChanged("PermissionState");
+					this.OnPermissionStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionExplanation", DbType="VarChar(MAX)")]
+		public string PermissionExplanation
+		{
+			get
+			{
+				return this._PermissionExplanation;
+			}
+			set
+			{
+				if ((this._PermissionExplanation != value))
+				{
+					this.OnPermissionExplanationChanging(value);
+					this.SendPropertyChanging();
+					this._PermissionExplanation = value;
+					this.SendPropertyChanged("PermissionExplanation");
+					this.OnPermissionExplanationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionDay", DbType="Int NOT NULL")]
+		public int PermissionDay
+		{
+			get
+			{
+				return this._PermissionDay;
+			}
+			set
+			{
+				if ((this._PermissionDay != value))
+				{
+					this.OnPermissionDayChanging(value);
+					this.SendPropertyChanging();
+					this._PermissionDay = value;
+					this.SendPropertyChanged("PermissionDay");
+					this.OnPermissionDayChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Months")]
+	public partial class Months : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _MonthName;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnMonthNameChanging(string value);
+    partial void OnMonthNameChanged();
+    #endregion
+		
+		public Months()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MonthName", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string MonthName
+		{
+			get
+			{
+				return this._MonthName;
+			}
+			set
+			{
+				if ((this._MonthName != value))
+				{
+					this.OnMonthNameChanging(value);
+					this.SendPropertyChanging();
+					this._MonthName = value;
+					this.SendPropertyChanged("MonthName");
+					this.OnMonthNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employee")]
 	public partial class Employee : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -364,6 +1130,12 @@ namespace DAL
 		
 		private System.Nullable<bool> _isAdmin;
 		
+		private string _Email;
+		
+		private System.Nullable<int> _PhoneNumber;
+		
+		private System.Nullable<System.DateTime> _AdmissionDate;
+		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -392,6 +1164,12 @@ namespace DAL
     partial void OnPasswordChanged();
     partial void OnisAdminChanging(System.Nullable<bool> value);
     partial void OnisAdminChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnPhoneNumberChanging(System.Nullable<int> value);
+    partial void OnPhoneNumberChanged();
+    partial void OnAdmissionDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnAdmissionDateChanged();
     #endregion
 		
 		public Employee()
@@ -639,6 +1417,66 @@ namespace DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNumber", DbType="Int")]
+		public System.Nullable<int> PhoneNumber
+		{
+			get
+			{
+				return this._PhoneNumber;
+			}
+			set
+			{
+				if ((this._PhoneNumber != value))
+				{
+					this.OnPhoneNumberChanging(value);
+					this.SendPropertyChanging();
+					this._PhoneNumber = value;
+					this.SendPropertyChanged("PhoneNumber");
+					this.OnPhoneNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdmissionDate", DbType="Date")]
+		public System.Nullable<System.DateTime> AdmissionDate
+		{
+			get
+			{
+				return this._AdmissionDate;
+			}
+			set
+			{
+				if ((this._AdmissionDate != value))
+				{
+					this.OnAdmissionDateChanging(value);
+					this.SendPropertyChanging();
+					this._AdmissionDate = value;
+					this.SendPropertyChanged("AdmissionDate");
+					this.OnAdmissionDateChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -660,15 +1498,15 @@ namespace DAL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Months")]
-	public partial class Months : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Department")]
+	public partial class Department : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
-		private string _MonthName;
+		private string _DeparmentName;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -676,11 +1514,11 @@ namespace DAL
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnMonthNameChanging(string value);
-    partial void OnMonthNameChanged();
+    partial void OnDeparmentNameChanging(string value);
+    partial void OnDeparmentNameChanged();
     #endregion
 		
-		public Months()
+		public Department()
 		{
 			OnCreated();
 		}
@@ -705,788 +1543,22 @@ namespace DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MonthName", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string MonthName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeparmentName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DeparmentName
 		{
 			get
 			{
-				return this._MonthName;
+				return this._DeparmentName;
 			}
 			set
 			{
-				if ((this._MonthName != value))
+				if ((this._DeparmentName != value))
 				{
-					this.OnMonthNameChanging(value);
+					this.OnDeparmentNameChanging(value);
 					this.SendPropertyChanging();
-					this._MonthName = value;
-					this.SendPropertyChanged("MonthName");
-					this.OnMonthNameChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Permission")]
-	public partial class Permission : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _EmployeeID;
-		
-		private System.DateTime _PermissionStartDate;
-		
-		private System.DateTime _PermissionEndDate;
-		
-		private int _PermissionState;
-		
-		private string _PermissionExplanation;
-		
-		private int _PermissionDay;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnEmployeeIDChanging(int value);
-    partial void OnEmployeeIDChanged();
-    partial void OnPermissionStartDateChanging(System.DateTime value);
-    partial void OnPermissionStartDateChanged();
-    partial void OnPermissionEndDateChanging(System.DateTime value);
-    partial void OnPermissionEndDateChanged();
-    partial void OnPermissionStateChanging(int value);
-    partial void OnPermissionStateChanged();
-    partial void OnPermissionExplanationChanging(string value);
-    partial void OnPermissionExplanationChanged();
-    partial void OnPermissionDayChanging(int value);
-    partial void OnPermissionDayChanged();
-    #endregion
-		
-		public Permission()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="Int NOT NULL")]
-		public int EmployeeID
-		{
-			get
-			{
-				return this._EmployeeID;
-			}
-			set
-			{
-				if ((this._EmployeeID != value))
-				{
-					this.OnEmployeeIDChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeID = value;
-					this.SendPropertyChanged("EmployeeID");
-					this.OnEmployeeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionStartDate", DbType="Date NOT NULL")]
-		public System.DateTime PermissionStartDate
-		{
-			get
-			{
-				return this._PermissionStartDate;
-			}
-			set
-			{
-				if ((this._PermissionStartDate != value))
-				{
-					this.OnPermissionStartDateChanging(value);
-					this.SendPropertyChanging();
-					this._PermissionStartDate = value;
-					this.SendPropertyChanged("PermissionStartDate");
-					this.OnPermissionStartDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionEndDate", DbType="Date NOT NULL")]
-		public System.DateTime PermissionEndDate
-		{
-			get
-			{
-				return this._PermissionEndDate;
-			}
-			set
-			{
-				if ((this._PermissionEndDate != value))
-				{
-					this.OnPermissionEndDateChanging(value);
-					this.SendPropertyChanging();
-					this._PermissionEndDate = value;
-					this.SendPropertyChanged("PermissionEndDate");
-					this.OnPermissionEndDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionState", DbType="Int NOT NULL")]
-		public int PermissionState
-		{
-			get
-			{
-				return this._PermissionState;
-			}
-			set
-			{
-				if ((this._PermissionState != value))
-				{
-					this.OnPermissionStateChanging(value);
-					this.SendPropertyChanging();
-					this._PermissionState = value;
-					this.SendPropertyChanged("PermissionState");
-					this.OnPermissionStateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionExplanation", DbType="VarChar(MAX)")]
-		public string PermissionExplanation
-		{
-			get
-			{
-				return this._PermissionExplanation;
-			}
-			set
-			{
-				if ((this._PermissionExplanation != value))
-				{
-					this.OnPermissionExplanationChanging(value);
-					this.SendPropertyChanging();
-					this._PermissionExplanation = value;
-					this.SendPropertyChanged("PermissionExplanation");
-					this.OnPermissionExplanationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionDay", DbType="Int NOT NULL")]
-		public int PermissionDay
-		{
-			get
-			{
-				return this._PermissionDay;
-			}
-			set
-			{
-				if ((this._PermissionDay != value))
-				{
-					this.OnPermissionDayChanging(value);
-					this.SendPropertyChanging();
-					this._PermissionDay = value;
-					this.SendPropertyChanged("PermissionDay");
-					this.OnPermissionDayChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PermissionState")]
-	public partial class PermissionState : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _StateName;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnStateNameChanging(string value);
-    partial void OnStateNameChanged();
-    #endregion
-		
-		public PermissionState()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string StateName
-		{
-			get
-			{
-				return this._StateName;
-			}
-			set
-			{
-				if ((this._StateName != value))
-				{
-					this.OnStateNameChanging(value);
-					this.SendPropertyChanging();
-					this._StateName = value;
-					this.SendPropertyChanged("StateName");
-					this.OnStateNameChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Position")]
-	public partial class Position : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _PositionName;
-		
-		private int _DepartmentID;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnPositionNameChanging(string value);
-    partial void OnPositionNameChanged();
-    partial void OnDepartmentIDChanging(int value);
-    partial void OnDepartmentIDChanged();
-    #endregion
-		
-		public Position()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PositionName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string PositionName
-		{
-			get
-			{
-				return this._PositionName;
-			}
-			set
-			{
-				if ((this._PositionName != value))
-				{
-					this.OnPositionNameChanging(value);
-					this.SendPropertyChanging();
-					this._PositionName = value;
-					this.SendPropertyChanged("PositionName");
-					this.OnPositionNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentID", DbType="Int NOT NULL")]
-		public int DepartmentID
-		{
-			get
-			{
-				return this._DepartmentID;
-			}
-			set
-			{
-				if ((this._DepartmentID != value))
-				{
-					this.OnDepartmentIDChanging(value);
-					this.SendPropertyChanging();
-					this._DepartmentID = value;
-					this.SendPropertyChanged("DepartmentID");
-					this.OnDepartmentIDChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Salary")]
-	public partial class Salary : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _EmployeeId;
-		
-		private int _Amount;
-		
-		private int _Year;
-		
-		private int _MonthID;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnEmployeeIdChanging(int value);
-    partial void OnEmployeeIdChanged();
-    partial void OnAmountChanging(int value);
-    partial void OnAmountChanged();
-    partial void OnYearChanging(int value);
-    partial void OnYearChanged();
-    partial void OnMonthIDChanging(int value);
-    partial void OnMonthIDChanged();
-    #endregion
-		
-		public Salary()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeId", DbType="Int NOT NULL")]
-		public int EmployeeId
-		{
-			get
-			{
-				return this._EmployeeId;
-			}
-			set
-			{
-				if ((this._EmployeeId != value))
-				{
-					this.OnEmployeeIdChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeId = value;
-					this.SendPropertyChanged("EmployeeId");
-					this.OnEmployeeIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Int NOT NULL")]
-		public int Amount
-		{
-			get
-			{
-				return this._Amount;
-			}
-			set
-			{
-				if ((this._Amount != value))
-				{
-					this.OnAmountChanging(value);
-					this.SendPropertyChanging();
-					this._Amount = value;
-					this.SendPropertyChanged("Amount");
-					this.OnAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Int NOT NULL")]
-		public int Year
-		{
-			get
-			{
-				return this._Year;
-			}
-			set
-			{
-				if ((this._Year != value))
-				{
-					this.OnYearChanging(value);
-					this.SendPropertyChanging();
-					this._Year = value;
-					this.SendPropertyChanged("Year");
-					this.OnYearChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MonthID", DbType="Int NOT NULL")]
-		public int MonthID
-		{
-			get
-			{
-				return this._MonthID;
-			}
-			set
-			{
-				if ((this._MonthID != value))
-				{
-					this.OnMonthIDChanging(value);
-					this.SendPropertyChanging();
-					this._MonthID = value;
-					this.SendPropertyChanged("MonthID");
-					this.OnMonthIDChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Task")]
-	public partial class Task : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _EmployeeID;
-		
-		private string _TaskTitle;
-		
-		private string _TaskContent;
-		
-		private System.Nullable<System.DateTime> _TaskStartDate;
-		
-		private System.Nullable<System.DateTime> _TaskDeliveryDate;
-		
-		private int _TaskState;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnEmployeeIDChanging(int value);
-    partial void OnEmployeeIDChanged();
-    partial void OnTaskTitleChanging(string value);
-    partial void OnTaskTitleChanged();
-    partial void OnTaskContentChanging(string value);
-    partial void OnTaskContentChanged();
-    partial void OnTaskStartDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnTaskStartDateChanged();
-    partial void OnTaskDeliveryDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnTaskDeliveryDateChanged();
-    partial void OnTaskStateChanging(int value);
-    partial void OnTaskStateChanged();
-    #endregion
-		
-		public Task()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="Int NOT NULL")]
-		public int EmployeeID
-		{
-			get
-			{
-				return this._EmployeeID;
-			}
-			set
-			{
-				if ((this._EmployeeID != value))
-				{
-					this.OnEmployeeIDChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeID = value;
-					this.SendPropertyChanged("EmployeeID");
-					this.OnEmployeeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskTitle", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string TaskTitle
-		{
-			get
-			{
-				return this._TaskTitle;
-			}
-			set
-			{
-				if ((this._TaskTitle != value))
-				{
-					this.OnTaskTitleChanging(value);
-					this.SendPropertyChanging();
-					this._TaskTitle = value;
-					this.SendPropertyChanged("TaskTitle");
-					this.OnTaskTitleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskContent", DbType="VarChar(MAX)")]
-		public string TaskContent
-		{
-			get
-			{
-				return this._TaskContent;
-			}
-			set
-			{
-				if ((this._TaskContent != value))
-				{
-					this.OnTaskContentChanging(value);
-					this.SendPropertyChanging();
-					this._TaskContent = value;
-					this.SendPropertyChanged("TaskContent");
-					this.OnTaskContentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskStartDate", DbType="Date")]
-		public System.Nullable<System.DateTime> TaskStartDate
-		{
-			get
-			{
-				return this._TaskStartDate;
-			}
-			set
-			{
-				if ((this._TaskStartDate != value))
-				{
-					this.OnTaskStartDateChanging(value);
-					this.SendPropertyChanging();
-					this._TaskStartDate = value;
-					this.SendPropertyChanged("TaskStartDate");
-					this.OnTaskStartDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskDeliveryDate", DbType="Date")]
-		public System.Nullable<System.DateTime> TaskDeliveryDate
-		{
-			get
-			{
-				return this._TaskDeliveryDate;
-			}
-			set
-			{
-				if ((this._TaskDeliveryDate != value))
-				{
-					this.OnTaskDeliveryDateChanging(value);
-					this.SendPropertyChanging();
-					this._TaskDeliveryDate = value;
-					this.SendPropertyChanged("TaskDeliveryDate");
-					this.OnTaskDeliveryDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskState", DbType="Int NOT NULL")]
-		public int TaskState
-		{
-			get
-			{
-				return this._TaskState;
-			}
-			set
-			{
-				if ((this._TaskState != value))
-				{
-					this.OnTaskStateChanging(value);
-					this.SendPropertyChanging();
-					this._TaskState = value;
-					this.SendPropertyChanged("TaskState");
-					this.OnTaskStateChanged();
+					this._DeparmentName = value;
+					this.SendPropertyChanged("DeparmentName");
+					this.OnDeparmentNameChanged();
 				}
 			}
 		}

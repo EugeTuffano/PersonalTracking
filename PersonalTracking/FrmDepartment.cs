@@ -8,7 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
+using BLL.Models;
 using DAL;
+using DAL.DTO;
+
 
 
 namespace PersonalTracking
@@ -38,7 +41,8 @@ namespace PersonalTracking
             }
             else
             {
-                Department department = new Department();
+                DepartmentModel department = new DepartmentModel();
+                
                 if (!isUpdate)
                 {
                     department.DeparmentName = txtDepartment.Text;
@@ -62,7 +66,7 @@ namespace PersonalTracking
             }
         }
         public bool isUpdate = false;
-        public Department detail = new Department();
+        public DepartmentModel detail = new DepartmentModel();
         private void FrmDepartment_Load(object sender, EventArgs e)
         {
             if (isUpdate)

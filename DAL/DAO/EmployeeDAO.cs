@@ -43,7 +43,10 @@ namespace DAL.DAO
                             Salary = e.Salary,
                             ImagePath = e.ImagePath,
                             birthDay = e.BirthDay,
-                            Adress = e.Adress
+                            Adress = e.Adress,
+                            Email = e.Email,
+                            PhoneNumber = e.PhoneNumber,
+                            AdmissionDate = e.AdmissionDate
                         }).OrderBy(x => x.UserNo).ToList();
 
             foreach (var item in list)
@@ -64,6 +67,9 @@ namespace DAL.DAO
                 dto.ImagePath = item.ImagePath;
                 dto.Adress = item.Adress;
                 dto.ImagePath = item.ImagePath;
+                dto.Email = item.Email;
+                dto.PhoneNumber = item.PhoneNumber;
+                dto.AdmissionDate = item.AdmissionDate;
                 employeeList.Add(dto);
 
             }
@@ -123,6 +129,9 @@ namespace DAL.DAO
                 emp.DepartmentID = employee.DepartmentID;
                 emp.PositionID = employee.PositionID;
                 emp.Salary = employee.Salary;
+                emp.Email = employee.Email;
+                emp.PhoneNumber = employee.PhoneNumber;
+                emp.AdmissionDate = employee.AdmissionDate;
                 db.SubmitChanges();
             }
             catch (Exception ex)

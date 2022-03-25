@@ -86,6 +86,9 @@ namespace PersonalTracking
             dataGridView1.Columns[11].Visible = false;
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns[13].Visible = false;
+            dataGridView1.Columns[14].HeaderText = "Email";
+            dataGridView1.Columns[15].Visible = false;
+            dataGridView1.Columns[16].Visible = false;
             combofull = false;
             cmbDepartment.DataSource = dto.Departments;
             cmbDepartment.DisplayMember = "DeparmentName";
@@ -133,7 +136,6 @@ namespace PersonalTracking
         private void btnClear_Click(object sender, EventArgs e)
         {
             CleanFilters();
-
         }
 
         private void CleanFilters()
@@ -167,9 +169,13 @@ namespace PersonalTracking
             detail.isAdmin = Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
             detail.BirthDay = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[13].Value);
             detail.UserNo = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+            detail.DepartmentID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[7].Value);
             detail.PositionID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
             detail.EmployeeID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
             detail.Salary = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
+            detail.Email = dataGridView1.Rows[e.RowIndex].Cells[14].Value.ToString();
+            detail.PhoneNumber = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[15].Value);
+            detail.AdmissionDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[16].Value);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

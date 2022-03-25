@@ -35,7 +35,7 @@ namespace PersonalTracking
                 MessageBox.Show("Please fill the User number and the password");
             else
             {
-                List<Employee> employeelist = EmployeeBLL.GetEmployees(Convert.ToInt32(txtUserNo.Text), txtPassword.Text);
+                List<Employee> employeelist = EmployeeBLL.GetEmployees(Convert.ToInt32(txtUserNo.Text), General.cifrar(txtPassword.Text));
                 if (employeelist.Count == 0)
                     MessageBox.Show("Please control your information");
                 else
